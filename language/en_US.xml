@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+    
+    <display_name>Moderation subsystem</display_name>
+    <icon>fa-bullseye</icon>
+    <description>
+        Keyword moderation lists and functions to prevent unwanted contents
+    </description>
+    
+    <messages>
+        <entries_in_blacklist_found><![CDATA[
+            You're including some words that are not allowed here.
+            Please review your submission and remove the next words from it:
+            {$detected_words_list}.
+        ]]></entries_in_blacklist_found>
+        
+        <entries_in_greylist_found><![CDATA[
+            Your submission has been flagged for review and a notification
+            has been sent to the moderators. Once it is reviewed, you'll be
+            notified if it has been accepted or rejected.
+        ]]></entries_in_greylist_found>
+        <entries_in_greylist_found_for_media><![CDATA[
+            Your submission has been flagged for review and a notification
+            has been sent to the moderators.
+            You will be able to embed it, but it wont show on media indexes.<br>
+            Once it is reviewed, you'll be notified.
+        ]]></entries_in_greylist_found_for_media>
+        <greylist_hit_warning_on_editing><![CDATA[
+            You're adding words that are listed in the for-review list. Please rephrase
+            your entry and remove the next words if you want to save it:
+            {$detected_words_list}.
+        ]]></greylist_hit_warning_on_editing>
+        <greylist_notifications_to_mods>
+            <for_comments><![CDATA[
+                {$user} has posted a comment on the post "{$post_title}" by {$author},
+                but it hit the <b>Greylist</b> on the next entries:<br>
+                <code>{$detected_words_list}</code>.<br><br>
+                PLease visit the <a href="{$comments_mod_url}">Comments moderation page</a>
+                and approve or reject the comment.
+            ]]></for_comments>
+            <for_media><![CDATA[
+                {$user} has submitted a media item titled '{$title}',
+                but it hit the <b>Greylist</b> on the next entries:<br>
+                <code>{$detected_words_list}</code>.<br><br>
+                PLease visit the <a href="{$gallery_browser_url}">Media Gallery Browser</a>
+                and approve or reject the item.
+            ]]></for_media>
+            <for_posts><![CDATA[
+                {$user} has submitted the post "{$post_title}",
+                but it hit the <b>Greylist</b> on the next entries:<br>
+                <code>{$detected_words_list}</code>.<br><br>
+                PLease visit the <a href="{$posts_mod_url}">Posts Browser</a>
+                and approve it or reject it.
+            ]]></for_posts>
+        </greylist_notifications_to_mods>
+        
+        <entries_in_usernames_blacklist_found><![CDATA[
+            Your user name contains at least one forbidden word.
+            Please remove the next words from it and try again:
+            {$detected_words_list}.
+        ]]></entries_in_usernames_blacklist_found>
+        <entries_in_displaynames_blacklist_found><![CDATA[
+            Your display name contains at least one forbidden word.
+            Please remove the next words from it and try again:
+            {$detected_words_list}.
+        ]]></entries_in_displaynames_blacklist_found>
+    </messages>
+    
+    <settings_data min_admin_level="240">
+        <title>Moderation</title>
+        
+        <specs key="words_blacklist">
+            <title><![CDATA[
+                <span class="framed_content inlined state_highlight">
+                    Censorship
+                </span>
+                Words blacklist
+            ]]></title>
+            <description><![CDATA[
+                On match, posts/comments/media are rejected with an error. No saving is done.<br>
+                <hr>
+                Type one word per line. Disable entries by adding a <code>#</code> at the beginning of the line.<br>
+                <span class="fa fa-info-circle"></span>
+                Note: words on this list are searched as full, not as part, so "pet" will not be found 
+                in "peter" but in "my pet", etc.<br>
+                Comparison is not case sensitive.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        <specs key="words_greylist">
+            <title><![CDATA[
+                <span class="framed_content inlined state_highlight">
+                    Censorship
+                </span>
+                Words greylist
+            ]]></title>
+            <description><![CDATA[
+                On match, posts/comments including them are accepted but hidden on indexes and flagged 
+                for moderation.<br>
+                Only mods/admins and the author will see them, and they will be highlighted.<br>
+                <hr>
+                Type one word per line. Disable entries by adding a <code>#</code> at the beginning of 
+                the line.<br><br>
+                
+                <b>words/phrases with expiration</b><br>
+                It is possible to set an expiration for a word of prhase by using the next syntax:<br>
+                <code>word or phrase | start_date | days</code><br>
+                Example:<br>
+                <code>the president sucks | 2016-12-01 | 31</code><br>
+                In that sample, the phrase <code>the president sucks</code> will get checked
+                for 31 días starting December 12 of 2016.<br>
+                Note: the check will remain until the end of the last day (23:59:59).<br><br>
+                
+                <span class="fa fa-info-circle"></span>
+                Note: words on this list are searched as full, not as part, so "pet" will not be found 
+                in "peter" but in "my pet", etc.<br>
+                Comparison is not case sensitive.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
+        <specs key="usernames_blacklist">
+            <title><![CDATA[
+                <span class="framed_content inlined state_highlight">
+                    Censorship
+                </span>
+                User names blacklist
+            ]]></title>
+            <description><![CDATA[
+                List of user names that are not allowed when a user tries to login or 
+                register an account.<br>
+                <hr>
+                Type one word per each line.
+                You can disable entries by adding a <code>#</code> at the beginning of the line.<br>
+                The next wildcards are supported:
+                <code>?</code> for a single character or <code>*</code> for any characters.<br>
+                <span class="fa fa-info-circle"></span>
+                Note: comparison is not case sensitive.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        <specs key="displaynames_blacklist">
+            <title><![CDATA[
+                <span class="framed_content inlined state_highlight">
+                    Censorship
+                </span>
+                Display names blacklist
+            ]]></title>
+            <description><![CDATA[
+                List of user display names that are not allowed when users try to register an account 
+                or edit their profiles.<br>
+                <hr>
+                Type one word per each line.
+                You can disable entries by adding a <code>#</code> at the beginning of the line.<br>
+                The next wildcards are supported:
+                <code>?</code> for a single character or <code>*</code> for any characters.<br>
+                <span class="fa fa-info-circle"></span>
+                Note: comparison is not case sensitive.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
+    </settings_data>
+</language>

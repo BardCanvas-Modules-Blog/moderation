@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+    
+    <display_name>Subsistema de moderación</display_name>
+    <icon>fa-bullseye</icon>
+    <description>
+        Listas de palabras de moderación y herramientas para evitar contenidos no deseados
+    </description>
+    
+    <messages>
+        <entries_in_blacklist_found><![CDATA[
+            Has incluído algunas palabras/frases que no están permitidas.
+            Revisa tu envío y remueve las siguientes palabras/frases:
+            {$detected_words_list}.
+        ]]></entries_in_blacklist_found>
+        
+        <entries_in_greylist_found><![CDATA[
+            Tu envío ha sido marcado para revisión y se ha notificado a los moderadores.
+            Se te avisará una vez que haya sido evaluado.
+        ]]></entries_in_greylist_found>
+        <entries_in_greylist_found_for_media><![CDATA[
+            Tu medio ha sido marcado para revisión y se ha notificado a los moderadores.
+            Podrás incrustarlo, pero no se mostrará en los índices de medios.<br>
+            Se te avisará una vez que haya sido evaluado.
+        ]]></entries_in_greylist_found_for_media>
+        <greylist_hit_warning_on_editing><![CDATA[
+            Estás añadiendo palabras/frases presentes en la lista de moderación.
+            Refrasea tu entrada y remueve lo siguiente:
+            {$detected_words_list}.
+        ]]></greylist_hit_warning_on_editing>
+        <greylist_notifications_to_mods>
+            <for_comments><![CDATA[
+                El usuario {$user} ha enviado un comentario a la entrada "{$post_title}" de {$author},
+                pero ha coincidido con la <b>Lista gris</b> en los siguientes casos:<br>
+                <code>{$detected_words_list}</code>.<br><br>
+                Visita la página de <a href="{$comments_mod_url}">moderación de comentarios</a>
+                y aprueba o rechaza el comentario.
+            ]]></for_comments>
+            <for_media><![CDATA[
+                El usuario {$user} ha subido el medio '{$title}',
+                pero ha coincidido con la <b>Lista gris</b> en los siguientes casos:<br>
+                <code>{$detected_words_list}</code>.<br><br>
+                Visita el <a href="{$gallery_browser_url}">Navegador de la galería de medios</a>
+                y aprueba o rechaza el medio.
+            ]]></for_media>
+            <for_posts><![CDATA[
+                El usuario {$user} ha enviado la entrada "{$post_title}",
+                pero ha coincidido con la <b>Lista gris</b> en los siguientes casos:<br>
+                <code>{$detected_words_list}</code>.<br><br>
+                Visita el <a href="{$posts_mod_url}">Navegador de entradas</a>
+                y apruébala o recházala.
+            ]]></for_posts>
+        </greylist_notifications_to_mods>
+        
+        <entries_in_usernames_blacklist_found><![CDATA[
+            Tu nombre de usuario contiene al menos una palabra no admitida.
+            Remueve las siguientes coincidencias e intenta de nuevo:
+            {$detected_words_list}.
+        ]]></entries_in_usernames_blacklist_found>
+        <entries_in_displaynames_blacklist_found><![CDATA[
+            Tu alias contiene al menos una palabra no admitida.
+            Remueve las siguientes coincidencias e intenta de nuevo:
+            {$detected_words_list}.
+        ]]></entries_in_displaynames_blacklist_found>
+    </messages>
+    
+    <settings_data allow_admin_level="240">
+        <title>Moderación</title>
+        
+        <specs key="words_blacklist">
+            <title><![CDATA[
+                <span class="framed_content inlined state_highlight">
+                    Censura
+                </span>
+                Lista negra
+            ]]></title>
+            <description><![CDATA[
+                Al coincidir, entradas/comentarios/medios son rechazados con un error (no son guardados).<br>
+                <hr>
+                Escribe una palabra o frase por línea. Deshabilita entradas añadiendo un <code>#</code>
+                al inicio de la línea.<br>
+                <span class="fa fa-info-circle"></span>
+                Nota: cada entrada en esta lista es buscada de forma completa, no parcial, de forma que
+                "sal" no coincidirá con "salina" pero sí con "sal de mesa".<br>
+                La comparación no es sensible a mayúsculas/minúsculas.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        <specs key="words_greylist">
+            <title><![CDATA[
+                <span class="framed_content inlined state_highlight">
+                    Censura
+                </span>
+                Lista gris
+            ]]></title>
+            <description><![CDATA[
+                Al coincidir, entradas/comentarios son aceptados pero marcados para moderación y ocultados
+                de los índices.<br>
+                Sólo moderadores/administradores y el autor podrán verlos en los navegadores de registros.<br>
+                <hr>
+                Escribe una palabra o frase por línea. Deshabilita entradas añadiendo un <code>#</code>
+                al inicio de la línea.<br><br>
+                
+                <b>Palabras/frases con caducidad</b><br>
+                Es posible establecer caducidad a una palabra o frase si se usa la siguiente sintaxis:<br>
+                <code>palabra o frase | fecha_inicio | dias</code><br>
+                Ejemplo:<br>
+                <code>el presidente apesta | 2016-12-01 | 31</code><br>
+                Con lo anterior, la frase <code>el presidente apesta</code> quedará en lista de moderación
+                durante 31 días a partir del 12 de diciembre de 2016.<br>
+                Nota: el bloqueo permanecerá activo hasta el final del último día (23:59:59)<br><br>
+                
+                <span class="fa fa-info-circle"></span>
+                Nota: cada entrada en esta lista es buscada de forma completa, no parcial, de forma que
+                "sal" no coincidirá con "salina" pero sí con "sal de mesa".<br>
+                La comparación no es sensible a mayúsculas/minúsculas.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
+        <specs key="usernames_blacklist">
+            <title><![CDATA[
+                <span class="framed_content inlined state_highlight">
+                    Censura
+                </span>
+                Lista negra de nombres de usuario
+            ]]></title>
+            <description><![CDATA[
+                Lista de palabras que son rechazadas cuando un usuario trata de abrir sesión o registrar una cuenta.<br>
+                <hr>
+                Escribe una palabra o frase por línea. Deshabilita entradas añadiendo un <code>#</code>
+                al inicio de la línea.<br>
+                Los siguientes comodines son aceptados:
+                <code>?</code> para buscar un caracter sencillo y <code>*</code> para cualquier cantidad de caracteres.<br>
+                <span class="fa fa-info-circle"></span>
+                Nota: la comparación no es sensible a mayúsculas/minúsculas.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        <specs key="displaynames_blacklist">
+            <title><![CDATA[
+                <span class="framed_content inlined state_highlight">
+                    Censura
+                </span>
+                Lista negra de aliases
+            ]]></title>
+            <description><![CDATA[
+                Lista de palabras que son rechazadas en el alias de las cuentas durante el registro o la edición del perfil.<br>
+                <hr>
+                Escribe una palabra o frase por línea. Deshabilita entradas añadiendo un <code>#</code>
+                al inicio de la línea.<br>
+                Los siguientes comodines son aceptados:
+                <code>?</code> para buscar un caracter sencillo y <code>*</code> para cualquier cantidad de caracteres.<br>
+                <span class="fa fa-info-circle"></span>
+                Nota: la comparación no es sensible a mayúsculas/minúsculas.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
+    </settings_data>
+</language>

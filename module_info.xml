@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    
+    <version>1.0</version>
+    <group>BardCanvas</group>
+    <admin_only>true</admin_only>
+    
+    <working_flags>
+        <install>true</install>
+        <uninstall>true</uninstall>
+        <enable>true</enable>
+        <disable>true</disable>
+    </working_flags>
+    
+    <!--
+    <template_includes>
+        <pre_rendering></pre_rendering>
+        <html_head></html_head>
+        <pre_header></pre_header>
+        <header_top></header_top>
+        <header_menu></header_menu>
+        <header_bottom></header_bottom>
+        <content_top></content_top>
+        <home_content></home_content>
+        <content_bottom></content_bottom>
+        <pre_footer></pre_footer>
+        <footer_top></footer_top>
+        <footer_bottom></footer_bottom>
+        <post_footer></post_footer>
+        <pre_eof></pre_eof>
+        <post_rendering></post_rendering>
+    </template_includes>
+    -->
+    
+    <extends_to>
+        <comments>
+            <add_comment>
+                <before_saving>extenders/comments/add_before_saving.inc</before_saving>
+                <after_saving>extenders/comments/add_after_saving.inc</after_saving>
+            </add_comment>
+            <save_comment>
+                <before_saving>extenders/comments/save_before_saving.inc</before_saving>
+            </save_comment>
+        </comments>
+        <gallery>
+            <save_item>
+                <after_saving>extenders/gallery/after_saving.inc</after_saving>
+            </save_item>
+        </gallery>
+        <posts>
+            <save_post>
+                <after_record_forging>extenders/posts/after_record_forging.inc</after_record_forging>
+                <after_saving>extenders/posts/after_saving.inc</after_saving>
+            </save_post>
+        </posts>
+        <accounts>
+            <registration>
+                <after_init>extenders/accounts/checks.inc</after_init>
+            </registration>
+            <profile_editor>
+                <after_init>extenders/accounts/checks.inc</after_init>
+            </profile_editor>
+        </accounts>
+    </extends_to>
+    
+</module>
