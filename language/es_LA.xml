@@ -118,44 +118,5 @@
             <type>code</type>
         </specs>
         
-        <specs key="usernames_blacklist">
-            <title><![CDATA[
-                <span class="framed_content inlined state_highlight">
-                    Censura
-                </span>
-                Lista negra de nombres de usuario
-            ]]></title>
-            <description><![CDATA[
-                Lista de palabras que son rechazadas cuando un usuario trata de abrir sesión o registrar una cuenta.<br>
-                <hr>
-                Escribe una palabra o frase por línea. Deshabilita entradas añadiendo un <code>#</code>
-                al inicio de la línea.<br>
-                Los siguientes comodines son aceptados:
-                <code>?</code> para buscar un caracter sencillo y <code>*</code> para cualquier cantidad de caracteres.<br>
-                <span class="fa fa-info-circle"></span>
-                Nota: la comparación no es sensible a mayúsculas/minúsculas.
-            ]]></description>
-            <type>code</type>
-        </specs>
-        <specs key="displaynames_blacklist">
-            <title><![CDATA[
-                <span class="framed_content inlined state_highlight">
-                    Censura
-                </span>
-                Lista negra de aliases
-            ]]></title>
-            <description><![CDATA[
-                Lista de palabras que son rechazadas en el alias de las cuentas durante el registro o la edición del perfil.<br>
-                <hr>
-                Escribe una palabra o frase por línea. Deshabilita entradas añadiendo un <code>#</code>
-                al inicio de la línea.<br>
-                Los siguientes comodines son aceptados:
-                <code>?</code> para buscar un caracter sencillo y <code>*</code> para cualquier cantidad de caracteres.<br>
-                <span class="fa fa-info-circle"></span>
-                Nota: la comparación no es sensible a mayúsculas/minúsculas.
-            ]]></description>
-            <type>code</type>
-        </specs>
-        
     </settings_data>
 </language>

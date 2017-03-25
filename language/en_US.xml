@@ -118,47 +118,5 @@
             ]]></description>
             <type>code</type>
         </specs>
-        
-        <specs key="usernames_blacklist">
-            <title><![CDATA[
-                <span class="framed_content inlined state_highlight">
-                    Censorship
-                </span>
-                User names blacklist
-            ]]></title>
-            <description><![CDATA[
-                List of user names that are not allowed when a user tries to login or 
-                register an account.<br>
-                <hr>
-                Type one word per each line.
-                You can disable entries by adding a <code>#</code> at the beginning of the line.<br>
-                The next wildcards are supported:
-                <code>?</code> for a single character or <code>*</code> for any characters.<br>
-                <span class="fa fa-info-circle"></span>
-                Note: comparison is not case sensitive.
-            ]]></description>
-            <type>code</type>
-        </specs>
-        <specs key="displaynames_blacklist">
-            <title><![CDATA[
-                <span class="framed_content inlined state_highlight">
-                    Censorship
-                </span>
-                Display names blacklist
-            ]]></title>
-            <description><![CDATA[
-                List of user display names that are not allowed when users try to register an account 
-                or edit their profiles.<br>
-                <hr>
-                Type one word per each line.
-                You can disable entries by adding a <code>#</code> at the beginning of the line.<br>
-                The next wildcards are supported:
-                <code>?</code> for a single character or <code>*</code> for any characters.<br>
-                <span class="fa fa-info-circle"></span>
-                Note: comparison is not case sensitive.
-            ]]></description>
-            <type>code</type>
-        </specs>
-        
     </settings_data>
 </language>
