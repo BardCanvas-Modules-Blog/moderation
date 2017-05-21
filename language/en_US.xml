@@ -54,6 +54,8 @@
             ]]></for_posts>
         </greylist_notifications_to_mods>
         
+        <greylist_for_listings><![CDATA[Greylist hits: <code>{$detected_words_list}</code>]]></greylist_for_listings>
+        
         <entries_in_usernames_blacklist_found><![CDATA[
             Your user name contains at least one forbidden word.
             Please remove the next words from it and try again:
@@ -118,5 +120,7 @@
             ]]></description>
             <type>code</type>
         </specs>
+        
+        <specs key="messages_table_created" disabled="true" />
     </settings_data>
 </language>

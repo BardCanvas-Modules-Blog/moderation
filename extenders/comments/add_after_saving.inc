@@ -20,12 +20,20 @@ use hng2_base\config;
 use hng2_base\module;
 use hng2_modules\comments\comment_record;
 use hng2_modules\comments\comments_repository;
+use hng2_modules\moderation\moderation_message_record;
+use hng2_modules\moderation\moderation_messages_repository;
 use hng2_modules\posts\post_record;
 use hng2_modules\moderation\toolbox;
 
 global $template, $language, $settings, $account, $comment, $post, $repository;
 
-if( $account->level >= config::MODERATOR_USER_LEVEL ) return;
+$messages_repository = new moderation_messages_repository();
+if( $account->level >= config::MODERATOR_USER_LEVEL )
+{
+    $messages_repository->delete_for_parent("comment", $comment->id_comment);
+    
+    return;
+}
 
 $toolbox = new toolbox();
 $input   = implode("\t", array(
@@ -38,6 +46,16 @@ $input   = implode("\t", array(
 $detected = $toolbox->probe_in_words_list($input, "words_greylist");
 if( ! empty($detected) )
 {
+    $messages_repository->save(new moderation_message_record(array(
+        "parent_type" => "comment",
+        "parent_id"   => $comment->id_comment,
+        "id_owner"    => $comment->id_author,
+        "message"     => replace_escaped_objects(
+            $this_module->language->messages->greylist_for_listings,
+            array('{$detected_words_list}' => implode("</code>, <code>", $detected))
+        )
+    )));
+    
     if( $account->_exists )
     {
         $contents = $this_module->language->messages->entries_in_greylist_found;

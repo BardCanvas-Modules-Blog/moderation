@@ -32,6 +32,15 @@
     </template_includes>
     -->
     
+    <!--
+    TODO: ====================================
+    TODO: Add extenders for cleaning up after:
+    TODO: • Emptying comments trash
+    TODO: • Emptying media trash
+    TODO: • Emptying posts trash
+    TODO: • Deleting account
+    TODO: ==================
+    -->
     <extends_to>
         <comments>
             <add_comment>
@@ -41,17 +50,38 @@
             <save_comment>
                 <before_saving>extenders/comments/save_before_saving.inc</before_saving>
             </save_comment>
+            <browser>
+                <per_record_function_hooks>extenders/comments/browser_function_hooks.inc</per_record_function_hooks>
+            </browser>
+            <toolbox>
+                <after_publishing>extenders/comments/toolbox_after_publishing.inc</after_publishing>
+            </toolbox>
         </comments>
         <gallery>
             <save_item>
                 <after_saving>extenders/gallery/after_saving.inc</after_saving>
             </save_item>
+            <browser>
+                <per_record_function_hooks>extenders/gallery/browser_preloads.inc</per_record_function_hooks>
+            </browser>
+            <records_browser>
+                <principal_data_addons>extenders/gallery/browser_addon.inc</principal_data_addons>
+            </records_browser>
+            <toolbox>
+                <after_publishing>extenders/gallery/toolbox_after_publishing.inc</after_publishing>
+            </toolbox>
         </gallery>
         <posts>
             <save_post>
                 <after_record_forging>extenders/posts/after_record_forging.inc</after_record_forging>
                 <after_saving>extenders/posts/after_saving.inc</after_saving>
             </save_post>
+            <browser>
+                <per_record_function_hooks>extenders/posts/browser_function_hooks.inc</per_record_function_hooks>
+            </browser>
+            <post_actions>
+                <after_publishing>extenders/posts/toolbox_after_publishing.inc</after_publishing>
+            </post_actions>
         </posts>
         <accounts>
             <registration>

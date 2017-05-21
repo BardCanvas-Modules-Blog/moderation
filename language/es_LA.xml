@@ -52,6 +52,8 @@
             ]]></for_posts>
         </greylist_notifications_to_mods>
         
+        <greylist_for_listings><![CDATA[Coincidencias en lista gris: <code>{$detected_words_list}</code>]]></greylist_for_listings>
+        
         <entries_in_usernames_blacklist_found><![CDATA[
             Tu nombre de usuario contiene al menos una palabra no admitida.
             Remueve las siguientes coincidencias e intenta de nuevo:
@@ -118,5 +120,6 @@
             <type>code</type>
         </specs>
         
+        <specs key="messages_table_created" disabled="true" />
     </settings_data>
 </language>

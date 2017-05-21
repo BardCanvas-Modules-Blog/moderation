@@ -18,12 +18,19 @@
 use hng2_base\config;
 use hng2_base\module;
 use hng2_modules\comments\comment_record;
+use hng2_modules\moderation\moderation_messages_repository;
 use hng2_modules\posts\post_record;
 use hng2_modules\moderation\toolbox;
 
 global $template, $language, $settings, $account, $comment, $post;
 
-if( $account->level >= config::MODERATOR_USER_LEVEL ) return;
+$messages_repository = new moderation_messages_repository();
+if( $account->level >= config::MODERATOR_USER_LEVEL )
+{
+    $messages_repository->delete_for_parent("comment", $comment->id_comment);
+    
+    return;
+}
 
 $toolbox = new toolbox();
 $input   = implode("\t", array(
