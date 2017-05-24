@@ -38,7 +38,6 @@
     TODO: • Emptying comments trash
     TODO: • Emptying media trash
     TODO: • Emptying posts trash
-    TODO: • Deleting account
     TODO: ==================
     -->
     <extends_to>
@@ -90,6 +89,9 @@
             <profile_editor>
                 <after_init>extenders/accounts/checks.inc</after_init>
             </profile_editor>
+            <accounts_repository>
+                <delete>extenders/accounts/deletion.inc</delete>
+            </accounts_repository>
         </accounts>
     </extends_to>
     
