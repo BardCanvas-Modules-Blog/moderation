@@ -32,12 +32,10 @@
     </template_includes>
     -->
     
-    <!--
-    TODO: ====================================
-    TODO: Add extenders for cleaning up after:
-    TODO: • Emptying media trash
-    TODO: ==================
-    -->
+    <php_includes>
+        <media_repository_empty_trash>extenders/media_repository_empty_trash.inc</media_repository_empty_trash>
+    </php_includes>
+    
     <extends_to>
         <comments>
             <add_comment>
