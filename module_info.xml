@@ -36,7 +36,6 @@
     TODO: ====================================
     TODO: Add extenders for cleaning up after:
     TODO: • Emptying media trash
-    TODO: • Emptying posts trash
     TODO: ==================
     -->
     <extends_to>
@@ -83,6 +82,9 @@
             <post_actions>
                 <after_publishing>extenders/posts/toolbox_after_publishing.inc</after_publishing>
             </post_actions>
+            <posts_repository_class>
+                <empty_trash>extenders/posts/empty_trash.inc</empty_trash>
+            </posts_repository_class>
         </posts>
         <accounts>
             <registration>
