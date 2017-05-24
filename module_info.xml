@@ -35,7 +35,6 @@
     <!--
     TODO: ====================================
     TODO: Add extenders for cleaning up after:
-    TODO: • Emptying comments trash
     TODO: • Emptying media trash
     TODO: • Emptying posts trash
     TODO: ==================
@@ -55,6 +54,9 @@
             <toolbox>
                 <after_publishing>extenders/comments/toolbox_after_publishing.inc</after_publishing>
             </toolbox>
+            <comments_repository_class>
+                <empty_trash>extenders/comments/empty_trash.inc</empty_trash>
+            </comments_repository_class>
         </comments>
         <gallery>
             <save_item>
