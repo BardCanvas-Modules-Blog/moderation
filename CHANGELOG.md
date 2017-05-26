@@ -1,6 +1,13 @@
 
 # Moderation Module Change Log
 
+## [1.2.0] - 2017-05-25
+
+- Added extender for cleanup on account deletion.
+- Added extender for cleanup on emptying comments trash.
+- Added extender for cleanup on emptying posts trash.
+- Added extender for cleanup on emptying media trash.
+
 ## [1.1.0] - 2017-05-23
 
 - Added extenders to register and show greylist hit messages on media, posts and comments.
