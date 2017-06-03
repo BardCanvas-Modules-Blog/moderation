@@ -74,6 +74,8 @@ class moderation_messages_repository extends abstract_repository
     {
         global $database;
         
+        if( empty($parent_ids) ) return array();
+        
         $ids = array();
         foreach($parent_ids as $id) $ids[] = "'$id'";
         $ids = implode(", ", $ids);
