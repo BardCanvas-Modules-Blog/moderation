@@ -1,6 +1,10 @@
 
 # Moderation Module Change Log
 
+## [1.2.1] - 2017-06-08
+
+- Added check on repository to avoid exceptions.
+
 ## [1.2.0] - 2017-05-25
 
 - Added extender for cleanup on account deletion.
