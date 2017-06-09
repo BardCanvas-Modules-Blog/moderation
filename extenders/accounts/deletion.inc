@@ -13,6 +13,7 @@
 
 use hng2_base\account;
 use hng2_base\module;
+use hng2_modules\moderation\moderation_messages_repository;
 
 global $database, $account;
 
@@ -26,6 +27,8 @@ $config->globals["deletions_log"][] = "<b>Starting Moderation extender for accou
 #
 # Delete all messages where the user is present
 #
+
+new moderation_messages_repository();
 $count = $database->exec("delete from moderation_messages where id_owner = '$id_account'");
 if( $count > 0 ) $config->globals["deletions_log"][] = "$count <b>Moderation messages</b> deleted.";
 
