@@ -1,6 +1,10 @@
 
 # Moderation Module Change Log
 
+## [1.2.2] - 2017-06-08
+
+- Fixed issues that threw exceptions when db tables weren't initialized properly.
+
 ## [1.2.1] - 2017-06-08
 
 - Added check on repository to avoid exceptions.
