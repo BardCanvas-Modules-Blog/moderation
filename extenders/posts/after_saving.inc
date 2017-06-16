@@ -25,6 +25,8 @@ use hng2_modules\moderation\toolbox;
 
 global $template, $language, $settings, $account, $post, $repository;
 
+if( $_POST["is_autosave"] == "true" ) return;
+
 $messages_repository = new moderation_messages_repository();
 if( $account->level >= config::MODERATOR_USER_LEVEL )
 {
