@@ -1,6 +1,10 @@
 
 # Moderation Module Change Log
 
+## [1.2.3] - 2017-06-16
+
+- Added check to skip extensions on posts autosaving.
+
 ## [1.2.2] - 2017-06-08
 
 - Fixed issues that threw exceptions when db tables weren't initialized properly.
